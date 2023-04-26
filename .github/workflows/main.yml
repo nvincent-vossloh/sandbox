@@ -1,0 +1,15 @@
+name: action on push
+on: [push, workflow_dispatch]
+jobs:
+  use-composite-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Composite action
+        uses: nicovince/hello-world-composite-action@main
+
+      - name: Vossloh Composite
+        uses: SiemaApplications/vossloh-gh-actions@main
+        with:
+          twister-result-file: README.md
