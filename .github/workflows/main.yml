@@ -13,3 +13,12 @@ jobs:
         uses: SiemaApplications/vossloh-gh-actions@main
         with:
           twister-result-file: README.md
+
+  use-composite-with-custom-container:
+    name: Custom Container call reusable composite
+    runs-on: ubuntu-latest
+    container: ghcr.io/siemaapplications/zephyr-arm-build:v0.0.3
+    steps:
+      - name: Composite action
+        uses: nicovince/hello-world-composite-action@main
+
