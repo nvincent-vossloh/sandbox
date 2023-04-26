@@ -12,7 +12,10 @@ jobs:
   use-composite-with-custom-container:
     name: Custom Container call reusable composite
     runs-on: ubuntu-latest
-    container: ghcr.io/siemaapplications/zephyr-arm-build:v0.0.3
+    container:
+      image: ghcr.io/siemaapplications/zephyr-arm-build:v0.0.3
+      volumes:
+        - /home/runner/work/_actions/nicovince/hello-world-composite-action/main:/home/runner/work/_actions/nicovince/hello-world-composite-action/main
     steps:
       - name: Composite action
         uses: nicovince/hello-world-composite-action@main
