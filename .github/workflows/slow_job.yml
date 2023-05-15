@@ -1,0 +1,12 @@
+name: Slow Jobs
+on: [push, workflow_dispatch]
+jobs:
+  fast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Hello World"
+        run: |
+          echo "Hello World"
+      - name: "Slow Step"
+        run: |
+          sleep 5m
