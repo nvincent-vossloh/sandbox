@@ -1,0 +1,23 @@
+name: Zephyr App
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    name: Zephyr Application Compilation
+    uses: SiemaApplications/vossloh-gh-actions/.github/workflows/twister-signed-compilation.yml@twister-sign-binaries
+    with:
+      app-dir: zephyr/samples/subsys/usb/dfu/
+      key-file: key.pem
+      twister-outdir: twister-app
+      tests-names: samples/subsys/usb/dfu/sample.usb.dfu
+    secrets:
+      signing-key: ${{ secrets.MCUBOOT_SANDBOX_KEY }}
