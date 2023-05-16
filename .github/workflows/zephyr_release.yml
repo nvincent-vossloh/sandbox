@@ -1,0 +1,28 @@
+name: Zephyr App
+on:
+  push:
+    branches-ignore:
+      - '**'
+    tags:
+      - 'sandbox-app-v*'
+
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  app_release:
+    name: Zephyr Application Release
+    uses: SiemaApplications/vossloh-gh-actions/.github/workflows/release-zephyr-signed-app.yml@twister-sign-binaries
+    with:
+      app-dir: zephyr/samples/subsys/usb/dfu/
+      key-file: key.pem
+      twister-outdir: twister-app
+      tests-names: samples/subsys/usb/dfu/sample.usb.dfu
+      boards: nucleo_h743zi
+      integration: false
+      project: sandbox
+      application: app
+    secrets:
+      signing-key: ${{ secrets.MCUBOOT_SANDBOX_KEY }}
