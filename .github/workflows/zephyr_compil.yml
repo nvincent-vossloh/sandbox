@@ -19,5 +19,6 @@ jobs:
       key-file: key.pem
       twister-outdir: twister-app
       tests-names: samples/subsys/usb/dfu/sample.usb.dfu
+      boards: nucleo_h743zi
     secrets:
       signing-key: ${{ secrets.MCUBOOT_SANDBOX_KEY }}
