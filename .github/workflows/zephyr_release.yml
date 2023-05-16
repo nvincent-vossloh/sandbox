@@ -1,4 +1,4 @@
-name: Zephyr App
+name: Zephyr Release
 on:
   push:
     branches-ignore:
