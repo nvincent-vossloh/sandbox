@@ -20,5 +20,6 @@ jobs:
       twister-outdir: twister-app
       tests-names: samples/subsys/usb/dfu/sample.usb.dfu
       boards: nucleo_h743zi
+      integration: false
     secrets:
       signing-key: ${{ secrets.MCUBOOT_SANDBOX_KEY }}
