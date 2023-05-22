@@ -6,6 +6,8 @@ on:
     tags:
       - 'sandbox-app-v*'
 
+permissions:
+  contents: write # to create release
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref_name }}
