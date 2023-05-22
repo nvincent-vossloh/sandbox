@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  app:
-    name: Zephyr Application Compilation
+  signed_app:
+    name: Zephyr Signed Application Compilation
     uses: SiemaApplications/vossloh-gh-actions/.github/workflows/twister-signed-compilation.yml@twister-sign-binaries
     with:
       app-dir: zephyr/samples/subsys/usb/dfu/
@@ -23,3 +23,13 @@ jobs:
       integration: false
     secrets:
       signing-key: ${{ secrets.MCUBOOT_SANDBOX_KEY }}
+
+  unsigned_app:
+    name: Zephyr Application Compilation
+    uses: SiemaApplications/vossloh-gh-actions/.github/workflows/twister-signed-compilation.yml@twister-sign-binaries
+    with:
+      app-dir: zephyr/samples
+      twister-outdir: twister-app
+      tests-names: samples/hello_world/sample.basic.helloworld
+      boards: nucleo_h743zi
+      integration: false

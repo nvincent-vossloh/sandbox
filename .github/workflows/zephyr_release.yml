@@ -16,7 +16,7 @@ concurrency:
 jobs:
   app_release:
     name: Zephyr Application Release
-    uses: SiemaApplications/vossloh-gh-actions/.github/workflows/release-zephyr-signed-app.yml@twister-sign-binaries
+    uses: SiemaApplications/vossloh-gh-actions/.github/workflows/release-zephyr-app.yml@twister-sign-binaries
     with:
       app-dir: zephyr/samples
       key-file: key.pem
