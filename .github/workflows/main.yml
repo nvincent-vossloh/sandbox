@@ -17,14 +17,14 @@ jobs:
         id: no-tee
         run: |
           cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]'
-          boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]')"
+          boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]' | tr '\n' ' ')"
           echo "boards=${boards}"
           echo "boards=${boards}" >> $GITHUB_OUTPUT
 
       - name: output var with tee
         id: tee
         run: |
-          boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]')"
+          boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]' | tr '\n' ' ')"
           echo "boards=${boards}" | tee -a $GITHUB_OUTPUT
 
       - name: show vars
