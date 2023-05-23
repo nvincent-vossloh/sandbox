@@ -9,6 +9,20 @@ jobs:
       - name: Composite action
         uses: nicovince/hello-world-composite-action@main
 
+      - name: output var
+        id: no-tee
+        run:
+          cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]'
+          boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]')"
+          echo "boards=${boards}"
+          echo "boads=${boards}" >> $GITHUB_OUTPUT
+
+      - name: output var with tee
+        id: tee
+        run:
+          boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]')"
+          echo "boards=${boards}" | tee -a $GITHUB_OUTPUT
+
   use-composite-with-custom-container:
     name: Custom Container call reusable composite
     runs-on: ubuntu-latest
@@ -19,4 +33,3 @@ jobs:
     steps:
       - name: Composite action
         uses: nicovince/hello-world-composite-action@main
-

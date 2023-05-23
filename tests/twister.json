@@ -1,0 +1,43 @@
+{
+    "environment":{
+        "os":"posix",
+        "zephyr_version":"zephyr-v3.1.0-12-gaee54ffaa087",
+        "toolchain":"zephyr"
+    },
+    "testsuites":[
+        {
+            "name":"sample.bootloader.mcuboot.vog_can",
+            "arch":"arm",
+            "platform":"vog_nucleo_f091rc",
+            "run_id":"a97fbe8595e1b33e3d91676474bb629d",
+            "runnable":false,
+            "status":"passed",
+            "execution_time":"0.00",
+            "testcases":[
+                {
+                    "identifier":"sample.bootloader.mcuboot.vog_can",
+                    "execution_time":"0.00",
+                    "status":"skipped",
+                    "reason":"Test was built only"
+                }
+            ]
+        },
+        {
+            "name":"sample.bootloader.mcuboot.vog_can",
+            "arch":"arm",
+            "platform":"vog_can",
+            "run_id":"6b0ee5e752f901e33d4a79010bedef22",
+            "runnable":false,
+            "status":"passed",
+            "execution_time":"0.00",
+            "testcases":[
+                {
+                    "identifier":"sample.bootloader.mcuboot.vog_can",
+                    "execution_time":"0.00",
+                    "status":"skipped",
+                    "reason":"Test was built only"
+                }
+            ]
+        }
+    ]
+}
