@@ -11,17 +11,22 @@ jobs:
 
       - name: output var
         id: no-tee
-        run:
+        run: |
           cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]'
           boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]')"
           echo "boards=${boards}"
-          echo "boads=${boards}" >> $GITHUB_OUTPUT
+          echo "boards=${boards}" >> $GITHUB_OUTPUT
 
       - name: output var with tee
         id: tee
-        run:
+        run: |
           boards="$(cat tests/twister.json | jq -r '[.testsuites[].platform] | unique | .[]')"
           echo "boards=${boards}" | tee -a $GITHUB_OUTPUT
+
+      - name: show vars
+        run: |
+          echo "no tee: ${{steps.no-tee.outputs.boards}}"
+          echo "tee: ${{steps.tee.outputs.boards}}"
 
   use-composite-with-custom-container:
     name: Custom Container call reusable composite
